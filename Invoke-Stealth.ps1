@@ -71,13 +71,14 @@ Import-Module $pwd\BetterXencrypt.ps1 -Force } ; Invoke-BetterXencrypt -InFile $
 Write-Host "[OK]" -ForegroundColor Green ; Write-Host ; del BetterXencrypt.ps1 -ErrorAction SilentlyContinue }
 
 function Load-PyFuscation {
-$TestPyFuscation = Test-Command python3 ; if($TestPyFuscation -in 'True'){ 
-if($Technique -like '*Chimera*' -or '*all*') { $some = 'more' } else { $some = 'some' }
-Write-Host "[+] Loading PyFuscation and doing $some obfuscation.. " -ForegroundColor Blue -NoNewline
-python3 ./Resources/PyFuscation/PyFuscation.py -fvp --ps $InvokePath 2>&1> $null
-$PyFuscation = "$pwd/Resources/PyFuscation/tmp/script.ps1" ; Clear-Content $InvokePath ; Add-Content $InvokePath $(Get-Content $PyFuscation)
-del "$pwd/Resources/PyFuscation/tmp" -R -Force -ErrorAction SilentlyContinue ; Write-Host "[OK]" -ForegroundColor Green ; Write-Host }
-else { Write-Host "[!] Python3 is not installed! PyFuscation will not load due to failed dependencies.." -ForegroundColor Red ; Write-Host }}
+#$TestPyFuscation = Test-Command python3 ; if($TestPyFuscation -in 'True'){ 
+#if($Technique -like '*Chimera*' -or '*all*') { $some = 'more' } else { $some = 'some' }
+#Write-Host "[+] Loading PyFuscation and doing $some obfuscation.. " -ForegroundColor Blue -NoNewline
+#python3 ./Resources/PyFuscation/PyFuscation.py -fvp --ps $InvokePath 2>&1> $null
+#$PyFuscation = "$pwd/Resources/PyFuscation/tmp/script.ps1" ; Clear-Content $InvokePath ; Add-Content $InvokePath $(Get-Content $PyFuscation)
+#del "$pwd/Resources/PyFuscation/tmp" -R -Force -ErrorAction SilentlyContinue ; Write-Host "[OK]" -ForegroundColor Green ; Write-Host }
+#else { Write-Host "[!] Python3 is not installed! PyFuscation will not load due to failed dependencies.." -ForegroundColor Red ; Write-Host }
+}
 
 function Load-PSObfuscation {
 #if($Technique -notin 'PSObfuscation') { Write-Host "[!] PSObfuscation will not load due to problems with another modules.." -ForegroundColor Red ; Write-Host } else {
