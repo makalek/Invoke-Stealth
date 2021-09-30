@@ -80,14 +80,15 @@ del "$pwd/Resources/PyFuscation/tmp" -R -Force -ErrorAction SilentlyContinue ; W
 else { Write-Host "[!] Python3 is not installed! PyFuscation will not load due to failed dependencies.." -ForegroundColor Red ; Write-Host }}
 
 function Load-PSObfuscation {
-if($Technique -notin 'PSObfuscation') { Write-Host "[!] PSObfuscation will not load due to problems with another modules.." -ForegroundColor Red ; Write-Host } else {
-Write-Host "[+] Loading PSObfuscation and doing some compression.. " -ForegroundColor Blue -NoNewline
-if ($local){ Import-Module $pwd\Resources\PSObfuscation\Invoke-PSObfuscation.ps1 -Force } else {
-Invoke-Expression (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/JoelGMSec/Invoke-Stealth/master/Resources/PSObfuscation/Invoke-PSObfuscation.ps1')}
-$PSobfuscated = Invoke-PSObfuscation -Path $InvokePath ; $content = ($PSobfuscated).Replace('powershell -NoP -NonI -W Hidden -Exec Bypass -Enc ','')
-Clear-Content $InvokePath ; Add-Content $InvokePath '$pwshcode = ' -NoNewline ; Add-Content $InvokePath $content
-Add-Content $InvokePath '$pwshdecoded = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String("$pwshcode"))'
-Add-Content $InvokePath 'Invoke-Expression $pwshdecoded'; Write-Host "[OK]" -ForegroundColor Green ; Write-Host }}
+#if($Technique -notin 'PSObfuscation') { Write-Host "[!] PSObfuscation will not load due to problems with another modules.." -ForegroundColor Red ; Write-Host } else {
+#Write-Host "[+] Loading PSObfuscation and doing some compression.. " -ForegroundColor Blue -NoNewline
+#if ($local){ Import-Module $pwd\Resources\PSObfuscation\Invoke-PSObfuscation.ps1 -Force } else {
+#Invoke-Expression (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/JoelGMSec/Invoke-Stealth/master/Resources/PSObfuscation/Invoke-PSObfuscation.ps1')}
+#$PSobfuscated = Invoke-PSObfuscation -Path $InvokePath ; $content = ($PSobfuscated).Replace('powershell -NoP -NonI -W Hidden -Exec Bypass -Enc ','')
+#Clear-Content $InvokePath ; Add-Content $InvokePath '$pwshcode = ' -NoNewline ; Add-Content $InvokePath $content
+#Add-Content $InvokePath '$pwshdecoded = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String("$pwshcode"))'
+#Add-Content $InvokePath 'Invoke-Expression $pwshdecoded'; Write-Host "[OK]" -ForegroundColor Green ; Write-Host }
+}
 
 function Rev64-Encoder {
 Write-Host "[+] Encoding with base64 and reverse it to avoid detections.. " -ForegroundColor Blue -NoNewline
