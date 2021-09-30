@@ -107,8 +107,9 @@ if($Technique -like '*PyFuscation*') { Load-PyFuscation }
 if($Technique -like '*PSObfuscation*') { Load-PSObfuscation }
 if($Technique -like '*ReverseB64*') { Rev64-Encoder }
 if($Technique -in 'All') { 
-	Load-Chimera ; Load-BetterXencrypt ; 
-	#Load-PyFuscation ; 
+	Load-Chimera; 
+	#Load-BetterXencrypt; 
+	Load-PyFuscation; 
 	#Load-PSObfuscation ; 
 	#Rev64-Encoder 
 }
