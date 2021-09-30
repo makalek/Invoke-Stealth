@@ -55,12 +55,13 @@ Catch {RETURN $false}
 Finally {$ErrorActionPreference=$oldPreference}}
 
 function Load-Chimera {
-$TestChimera = Test-Command bash ; if($TestChimera -in 'True'){ 
-Write-Host "[+] Loading Chimera and doing some obfuscation.. " -ForegroundColor Blue -NoNewline
-bash ./Resources/Chimera/Chimera.sh -z -q -f $InvokePath -a 2>&1> $null
-$Chimera = ls *chimera* ; Clear-Content $InvokePath ; Add-Content $InvokePath $(Get-Content $Chimera)
-del $Chimera -ErrorAction SilentlyContinue ; Write-Host "[OK]" -ForegroundColor Green ; Write-Host }
-else { Write-Host "[!] Bash is not installed! Chimera will not load due to failed dependencies.." -ForegroundColor Red ; Write-Host }}
+#$TestChimera = Test-Command bash ; if($TestChimera -in 'True'){ 
+#Write-Host "[+] Loading Chimera and doing some obfuscation.. " -ForegroundColor Blue -NoNewline
+#bash ./Resources/Chimera/Chimera.sh -z -q -f $InvokePath -a 2>&1> $null
+#$Chimera = ls *chimera* ; Clear-Content $InvokePath ; Add-Content $InvokePath $(Get-Content $Chimera)
+#del $Chimera -ErrorAction SilentlyContinue ; Write-Host "[OK]" -ForegroundColor Green ; Write-Host }
+#else { Write-Host "[!] Bash is not installed! Chimera will not load due to failed dependencies.." -ForegroundColor Red ; Write-Host }
+}
 
 function Load-BetterXencrypt {
 Write-Host "[+] Loading BetterXencrypt and doing some encryption with $RandomNumber iterations.. " -ForegroundColor Blue -NoNewline
